@@ -5,6 +5,13 @@
 <meta name="theme-color" content="#3a1424"><title>Para Daisy ❤️ — Kevin Artega</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#71334c,#32111f 60%,#190a12);color:#fff8f5;font-family:Georgia,serif}
+#intro{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle at top,#71334c,#32111f 65%,#190a12);transition:opacity .8s ease,visibility .8s ease}
+#intro h1{font-size:clamp(40px,9vw,64px)}#intro p{font-size:18px;color:#f3d6df}
+#heartButton{border:0;background:none;color:#ff789f;font-size:112px;line-height:1;cursor:pointer;filter:drop-shadow(0 0 18px #ff6b9d);transition:transform .25s}
+#heartButton:active{transform:scale(.9)}#heartButton.loading{animation:heartbeat .45s ease-in-out infinite alternate;color:#ff174f}
+@keyframes heartbeat{from{transform:scale(1)}to{transform:scale(1.28);filter:drop-shadow(0 0 38px #ff174f)}}
+#intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+#gift{opacity:0;visibility:hidden;transition:opacity .9s ease}body.opened #gift{opacity:1;visibility:visible}
 main{max-width:900px;margin:auto;padding:24px 16px 50px}.hero{min-height:85vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 h1{font-size:clamp(44px,10vw,76px);font-weight:normal;color:#ffe3e9;margin:16px 0}.heart{font-size:60px;color:#ff789f;filter:drop-shadow(0 0 18px #ff6b9d)}
 p{line-height:1.7}.gold{color:#e9c58b}.btn{display:inline-block;margin-top:16px;padding:14px 24px;border-radius:30px;background:#f7d9e1;color:#45192b;text-decoration:none}
@@ -12,10 +19,12 @@ section{margin:24px 0;padding:24px;border:1px solid #ffffff33;border-radius:22px
 .letter{font-size:18px;line-height:1.85;white-space:pre-line}.sign{text-align:right;color:#ffd3df;font-style:italic;font-size:22px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.gallery img{width:100%;height:300px;object-fit:cover;border-radius:14px}
 footer{text-align:center;color:#d7aeba;font:12px Arial,sans-serif;padding:20px}
-</style></head><body><main>
+</style></head><body>
+<div id="intro"><div class="gold">UN REGALO HECHO CON AMOR</div><h1>Para Daisy ❤️</h1><p>Hay una sorpresa esperando por vos…</p><button id="heartButton" aria-label="Abrir mi regalo">♥</button><p>Tocá el corazón para descubrirla</p><p class="gold"><i>Con amor, Kevin Artega</i></p></div>
+<div id="gift"><main>
 <div class="hero"><div class="heart">♥</div><p class="gold">UN REGALO HECHO CON AMOR</p><h1>Para Daisy</h1>
 <p style="font-size:21px;max-width:580px">Hay personas que hacen más bonito nuestro mundo. Esta pequeña sorpresa es para vos.</p>
-<p class="gold"><i>Con amor, Kevin Artega</i></p><a class="btn" href="#recuerdos">Abrí tu sorpresa ❤️</a></div>
+<p class="gold"><i>Con amor, Kevin Artega</i></p></div>
 <section id="recuerdos"><h2>Nuestros recuerdos 📸</h2><div class="gallery">
 <img src="2594eff60760382766809ae33dcef33d.webp" alt="Un recuerdo especial">
 <img src="41ff9409754daa0edf7e8397d98914fa.jpeg" alt="Un recuerdo especial">
@@ -41,4 +50,14 @@ Te amo, Daisy. Y si hay algo que deseo es que todavía nos queden muchísimas hi
 <section style="text-align:center"><h2>Nuestra canción 🎶</h2><p style="font-size:21px">“Por Primera Vez” — Camilo</p><a class="btn" href="https://open.spotify.com/track/0pgj4EzB1XRqgZemoMNG5D" target="_blank" rel="noopener">Escuchar nuestra canción ♫</a><p class="gold" style="font:13px Arial">Se abrirá Spotify para reproducirla.</p></section>
 <div style="text-align:center;padding:18px"><div class="heart">♥</div><p style="font-size:22px;color:#ffe1e8">Sos parte de mis momentos más lindos.</p><p class="gold"><i>Kevin Artega</i></p></div>
 <footer>Hecho especialmente para Daisy, con amor. ❤️</footer>
-</main></body></html>
+</main></div><script>
+document.getElementById('heartButton').addEventListener('click',function(){
+  this.classList.add('loading');
+  document.getElementById('intro').style.pointerEvents='none';
+  setTimeout(function(){
+    document.body.classList.add('opened');
+    document.getElementById('intro').classList.add('gone');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },1400);
+});
+</script></body></html>
